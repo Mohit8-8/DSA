@@ -1,0 +1,13 @@
+class Solution:
+
+    def __init__(self, nums: List[int]):
+        self.hashy = {}
+        for i, num in enumerate(nums):
+            if num not in self.hashy:
+                self.hashy[num] = []
+            self.hashy[num].append(i)
+
+
+    def pick(self, target: int) -> int:
+        randPick = random.randint(0, len(self.hashy[target])-1)
+        return self.hashy[target][randPick]
