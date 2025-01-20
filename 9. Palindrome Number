@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        long long dupl = x;
+        long long revnum=0;
+        long long lastdigit=0;
+        while(x>0){
+            lastdigit=x%10;
+            revnum=(revnum*10)+lastdigit;
+            x=x/10;
+        }
+        if(dupl==revnum){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
