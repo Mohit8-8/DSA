@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    int evenlyDivides(int n) {
+        int cnt = 0;
+        int original = n; // Store the original number
+        while (n > 0) {
+            int digit = n % 10; // Extract the last digit
+            n /= 10; // Reduce the number
+            if (digit != 0 && original % digit == 0) {
+                cnt++; // Increment count if the digit divides the original number
+            }
+        }
+        return cnt;
+    }
+};
+
