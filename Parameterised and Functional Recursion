@@ -1,0 +1,49 @@
+//Parameterised Recursion
+int sum(int n){
+    if(n == 0){
+        return 0;
+    }
+    return n + sum(n-1); //calls functions again until n == 0  returns 0 added to the sum n until n-1 is performed till 0
+}
+int main() {
+    int n = 3;
+    cout<<sum(n);
+
+    return 0;
+}
+
+//----------------------------------------------------------
+//factorial of n numbers
+
+int fac(int n){
+    if(n == 0){
+        return 1;//return 1 because if we return 0 the * will become zero as well
+    }
+    return n * fac(n-1); 
+}
+
+//----------------------------------------------------
+//reverse an array using recursion
+void f(int i , int arr[],int n){
+    if(i>=n/2) return;
+
+    swap(arr[i],arr[n-i-1]);
+    f(i+1,arr,n);
+}
+
+int main() {
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i =0 ;i<n ;i++){
+        cin>>arr[i];
+    }
+    
+    f(0,arr,n);
+    
+    for(int i = 0; i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    
+    return 0;
+}
