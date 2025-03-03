@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+        vector<char> stack;
+        int cnt=0;
+        for(char c: s){
+            if(c=='('){
+                stack.push_back(c);
+            }
+            else{
+                if(stack.empty()){
+                   cnt++; 
+                }
+                else{
+                    stack.pop_back();
+                }
+            }
+
+        } 
+        return cnt+stack.size();
+    }
+};
