@@ -1,0 +1,24 @@
+class Solution {
+  public:
+    // Function to find the next greater element for each element of the array.
+    vector<int> nextLargerElement(vector<int>& arr) {
+        // code here
+        
+        vector<int> vec(arr.size());
+        stack<int>Stack;
+        for(int i=arr.size()-1;i>=0;i--){
+            while(!Stack.empty() && Stack.top()<=arr[i]){
+                Stack.pop();
+            }
+            if(Stack.empty()){
+                vec[i]=-1;
+                Stack.push(arr[i]);
+            }
+            else{
+                vec[i]=Stack.top();
+                Stack.push(arr[i]);
+            }
+        }
+        return vec;
+    }
+};
