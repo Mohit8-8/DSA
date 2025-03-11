@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    
+    int t;
+    cin>>t;
+    while(t--){
+        int cnt=0;
+        int x;
+        cin>>x;
+        while(x!=50){
+        if(x<50){
+            x=x+2;
+            cnt++;    
+        }
+        else if(x>50){
+            x=x-3;
+            cnt++;
+        }
+    }
+    cout<<cnt<<endl;    
+    }
+    
+}
