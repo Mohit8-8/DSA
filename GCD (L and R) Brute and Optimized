@@ -1,0 +1,74 @@
+//FINDING THE GCD USING BRUTE FORCE APPROACH 
+//find the gcd of l-1 and r+1 of the array except the l and r including both 
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n,q;
+        cin>>n>>q;
+        int a[n+10];
+        for(int i = 1; i<=n; i++){
+            cin>>a[i];
+        }
+        while(q--){
+            int l,r;
+            cin>>l,r;
+            int gc=0;
+            for(int i =1;i<=l-1;i++){
+                gc = __gcd(gc,a[i]);
+            }
+            for(int i =r+1;i<=n;i++){
+                gc = __gcd(gc,a[i]);
+            }
+            cout<<gc<<endl;
+        }
+    }
+    
+}
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------
+//OPTIMIZED CODE USES TWO VECTOR/ARRAY TO STORE THE PREFIX AND SUFFIX AND DIRECTLY FETCH THE GCD IN O(1) TIME 
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        int n, q;
+        cin >> n >> q;
+        
+        vector<int> a(n + 1), prefix(n + 1, 0), suffix(n + 2, 0);
+
+        // Read array input
+        for (int i = 1; i <= n; i++) {
+            cin >> a[i];
+        }
+
+        // Precompute Prefix GCD
+        for (int i = 1; i <= n; i++) {
+            prefix[i] = __gcd(prefix[i - 1], a[i]);
+        }
+
+        // Precompute Suffix GCD
+        for (int i = n; i >= 1; i--) {
+            suffix[i] = __gcd(suffix[i + 1], a[i]);
+        }
+
+        // Process queries in O(1)
+        while (q--) {
+            int l, r;
+            cin >> l >> r;
+            cout << __gcd(prefix[l - 1], suffix[r + 1]) << endl;
+        }
+    }
+    return 0;
+}
