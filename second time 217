@@ -1,3 +1,4 @@
+# first method doing a sorting and then comparing values from the next element if found return true else false
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         nums.sort()
@@ -5,4 +6,12 @@ class Solution:
             if nums[i]==nums[i-1]:
                 return True
         return False
-        
+
+
+
+#second method create a set and then all the duplicate values will be removed and then compare the length of the set and the original array 
+
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        return len(set(nums)) < len(nums)
+
