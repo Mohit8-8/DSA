@@ -1,0 +1,18 @@
+class Solution:
+    def findClosestNumber(self, nums: List[int]) -> int:
+        close=nums[0]
+
+        for i in nums:
+            if(abs(i)<abs(close)):
+                close=i
+
+            elif abs(i)==abs(close) and i>close:
+               close=i
+
+        return close
+
+
+one liner code 
+class Solution:
+    def findClosestNumber(self, nums: List[int]) -> int:
+        return min(nums, key=lambda x:(abs(x),-x))
