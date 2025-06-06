@@ -1,0 +1,15 @@
+class Solution(object):
+    def dailyTemperatures(self, temperatures):
+        n = len(temperatures)
+        answers = [0]*n
+        stack = []
+
+        for i in range(n):
+            while stack and temperatures[i] > temperatures[stack[-1]]:
+                prev_day = stack.pop()
+                answers[prev_day] = i - prev_day
+            stack.append(i)
+        
+        return answers
+
+        
