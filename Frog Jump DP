@@ -1,0 +1,19 @@
+class Solution:
+    def helper(self,n,height,dp):
+        if n==0:
+            return 0 
+        if n==1:
+            return abs(height[0]-height[1])
+        if dp[n]!=-1:
+            return dp[n]
+        
+        jump1 = abs(height[n]-height[n-1])+self.helper(n-1,height,dp)
+        jump2 = abs(height[n]-height[n-2])+self.helper(n-2,height,dp)
+        dp[n] = min(jump1, jump2)
+        return dp[n] 
+        
+    
+    def minCost(self,height):
+        n=len(height)
+        dp=[-1]*(n)
+        return self.helper(n-1,height,dp)
