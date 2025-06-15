@@ -2,7 +2,6 @@ class Solution {
 public:
     ListNode* deleteMiddle(ListNode* head) {
         if (!head || !head->next) return nullptr; // If only one node exists, return nullptr
-
         ListNode* slow = head;
         ListNode* fast = head;
         ListNode* prev = nullptr;
