@@ -1,0 +1,17 @@
+from collections import Counter
+class Solution(object):
+    def checkPrimeFrequency(self, nums):
+        def isprime(n):
+            if n < 2:
+                return False
+            for i in range(2, int(n ** 0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True
+
+        fq = Counter(nums)
+
+        for count in fq.values():
+            if isprime(count):
+                return True
+        return False
