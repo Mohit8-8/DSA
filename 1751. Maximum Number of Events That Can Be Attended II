@@ -1,0 +1,11 @@
+class Solution:
+    def maxValue(self, events: List[List[int]], k: int) -> int:
+        events.sort()
+
+        @cache
+        def calc(i,kk):
+            if i==len(events) or kk==0: return 0
+            j = bisect_right(events,events[i][1],lo=i+1,key=itemgetter(0))
+            return max(calc(i+1,kk),events[i][2]+calc(j,kk-1))
+
+        return calc(0,k)
